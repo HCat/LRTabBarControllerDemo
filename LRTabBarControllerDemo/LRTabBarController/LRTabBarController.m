@@ -21,14 +21,11 @@ static const float kPushAnimationDuration = 0.35;
     BOOL visible;
 }
 
-typedef enum {
-    LRShowHideFromLeft,
-    LRShowHideFromRight
-} LRShowHideFrom;
+@property (nonatomic,strong) UIViewController *currentShowVC;
 
 - (void)loadTabs;
-- (void)showTabBar:(LRShowHideFrom)showHideFrom animated:(BOOL)animated;
-- (void)hideTabBar:(LRShowHideFrom)showHideFrom animated:(BOOL)animated;
+- (void)showTabBar:(CGFloat)directionVector animated:(BOOL)animated;
+- (void)hideTabBar:(CGFloat)directionVector animated:(BOOL)animated;
 
 @end
 
@@ -121,6 +118,7 @@ typedef enum {
         
         if ([[vc class] isSubclassOfClass:[UINavigationController class]])
             ((UINavigationController *)vc).delegate = self;
+//            [((UINavigationController *)vc).interactivePopGestureRecognizer setDelegate:(id<UIGestureRecognizerDelegate> _Nullable)self];
         
         [tabs addObject:tab];
     }
@@ -135,7 +133,39 @@ typedef enum {
 
 #pragma - UINavigationControllerDelegate
 
+
+
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+   
+    __weak typeof(self) weakSelf = self;
+    //滑动手势监听，用来监听滑动手势之后是否显示或者隐藏tabBar
+    id< UIViewControllerTransitionCoordinator >tc = navigationController.transitionCoordinator;
+    [tc notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if ([context isCancelled]) {
+        
+            NSLog(@"手势滑动结束:%@",strongSelf.currentShowVC);
+            BOOL hide = [strongSelf.currentShowVC hidesBottomBarWhenPushed];
+            NSLog(@"[viewController lastObject]:%i",hide);
+            if (hide) {
+                [strongSelf hideTabBar:0.0f animated:animated];
+            }else{
+                [strongSelf showTabBar:0.0f animated:animated];
+            }
+        }else{
+            BOOL hide = [[navigationController viewControllers].lastObject hidesBottomBarWhenPushed];
+            if (hide) {
+                [strongSelf hideTabBar:0.0f animated:animated];
+            }else{
+                [strongSelf showTabBar:0.0f animated:animated];
+            }
+            
+        }
+        
+    }];
+    
+    
     if (!prevViewControllers){
         prevViewControllers = [navigationController viewControllers];
     }
@@ -159,33 +189,31 @@ typedef enum {
     if (!isPreviousHidden && !isNextHidden){
         return;
     }else if (!isPreviousHidden && isNextHidden){
-        [self hideTabBar:(pushed ? LRShowHideFromRight : LRShowHideFromLeft) animated:animated];
+        [self hideTabBar:0.0f animated:animated];
     
     }else if (isPreviousHidden && !isNextHidden){
-        [self showTabBar:(pushed ? LRShowHideFromRight : LRShowHideFromLeft) animated:animated];
+        [self showTabBar:1.0f animated:animated];
     
     }else if (isPreviousHidden && isNextHidden){
         return;
     }
 }
 
-- (void)showTabBar:(LRShowHideFrom)showHideFrom animated:(BOOL)animated{
-    
-    CGFloat directionVector;
-    
-    switch (showHideFrom) {
-        case LRShowHideFromLeft:
-            directionVector = -1.0;
-            break;
-        case LRShowHideFromRight:
-            directionVector = 1.0;
-            break;
-        default:
-            break;
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+
+    if (navigationController.viewControllers.count == 1){
+        self.currentShowVC = Nil;
+    }else{
+        self.currentShowVC = viewController;
     }
+}
+
+
+- (void)showTabBar:(CGFloat)directionVector animated:(BOOL)animated{
     
+   
     tabBar.hidden = NO;
-    tabBar.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.bounds) * directionVector, 0);
+    tabBar.transform = CGAffineTransformMakeTranslation(0, CGRectGetHeight(tabBar.bounds) * directionVector);
     // when the tabbarview is resized we can see the view behind
     [tabBarView setContentView:_selectedViewController.view];
     if (animated) {
@@ -203,34 +231,23 @@ typedef enum {
 
 }
 
-- (void)hideTabBar:(LRShowHideFrom)showHideFrom animated:(BOOL)animated{
-    
-    CGFloat directionVector;
-    switch (showHideFrom) {
-        case LRShowHideFromLeft:
-            directionVector = 1.0;
-            break;
-        case LRShowHideFromRight:
-            directionVector = -1.0;
-            break;
-        default:
-            break;
-    }
+- (void)hideTabBar:(CGFloat)directionVector animated:(BOOL)animated{
     
     tabBarView.isTabBarHidding = YES;
     
     CGRect tmpTabBarView = tabBarView.contentView.frame;
     tmpTabBarView.size.height = tabBarView.bounds.size.height;
     tabBarView.contentView.frame = tmpTabBarView;
+    
     if (animated) {
         [UIView animateWithDuration:((animated) ? kPushAnimationDuration : 0) animations:^{
-            tabBar.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.bounds) * directionVector, 0);
+            tabBar.transform = CGAffineTransformMakeTranslation(0, CGRectGetHeight(tabBar.bounds) * directionVector);
         } completion:^(BOOL finished) {
             tabBar.hidden = YES;
             tabBar.transform = CGAffineTransformIdentity;
         }];
     }else{
-        tabBar.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.bounds) * directionVector, 0);
+        tabBar.transform = CGAffineTransformMakeTranslation(0, CGRectGetHeight(tabBar.bounds) * directionVector);
         tabBar.hidden = YES;
         tabBar.transform = CGAffineTransformIdentity;
     }
@@ -298,11 +315,11 @@ typedef enum {
 #pragma mark - Hide / Show Methods
 
 - (void)showTabBarAnimated:(BOOL)animated {
-    [self showTabBar:LRShowHideFromRight animated:animated];
+    [self showTabBar:1.0f animated:animated];
 }
 
 - (void)hideTabBarAnimated:(BOOL)animated {
-    [self hideTabBar:LRShowHideFromRight animated:animated];
+    [self hideTabBar:0.0f animated:animated];
 }
 
 #pragma mark - Required Protocol Method

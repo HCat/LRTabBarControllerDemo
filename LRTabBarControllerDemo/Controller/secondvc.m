@@ -31,9 +31,9 @@
     return @"tab_list_n";
 }
 
-//- (NSString *)tabSelectedImageName{
-//    return @"tab_list_h";
-//}
+- (NSString *)tabSelectedImageName{
+    return @"tab_list_h";
+}
 
 - (NSString *)tabTitle{
     return NSLocalizedString(@"待处理", nil);

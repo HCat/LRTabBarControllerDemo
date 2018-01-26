@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="firstToNextVC">
             <connections>
+                <outlet property="lb_title" destination="Tfm-ej-Anl" id="qNH-W8-ryk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,28 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfm-ej-Anl">
+                    <rect key="frame" x="166.5" y="323" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJN-iN-Feg">
+                    <rect key="frame" x="172.5" y="277" width="30" height="30"/>
+                    <state key="normal" title="next"/>
+                    <connections>
+                        <action selector="handleBtnNextClicked:" destination="-1" eventType="touchUpInside" id="TZ3-Pi-lKB"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="XJN-iN-Feg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7aO-CW-PEJ"/>
+                <constraint firstItem="XJN-iN-Feg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="277" id="BwY-q1-xhk"/>
+                <constraint firstItem="Tfm-ej-Anl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="S5e-c1-Y1r"/>
+                <constraint firstItem="Tfm-ej-Anl" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="nuZ-FN-LqQ"/>
+            </constraints>
         </view>
     </objects>
 </document>

@@ -30,6 +30,10 @@
 		CE6C4C262019AC3400BE1A13 /* LRTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE6C4C252019AC3400BE1A13 /* LRTabBarController.bundle */; };
 		CE6C4C2A2019E02000BE1A13 /* firstToNextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6C4C282019E02000BE1A13 /* firstToNextVC.m */; };
 		CE6C4C2B2019E02000BE1A13 /* firstToNextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6C4C292019E02000BE1A13 /* firstToNextVC.xib */; };
+		CEC96132201B16B3009923FE /* PPDragDropBadgeView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CEC9612A201B16B2009923FE /* PPDragDropBadgeView.bundle */; };
+		CEC96133201B16B3009923FE /* PRTweenTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC9612F201B16B2009923FE /* PRTweenTimingFunctions.m */; };
+		CEC96134201B16B3009923FE /* PRTween.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC96130201B16B2009923FE /* PRTween.m */; };
+		CEC96135201B16B3009923FE /* PPDragDropBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC96131201B16B2009923FE /* PPDragDropBadgeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +76,13 @@
 		CE6C4C272019E02000BE1A13 /* firstToNextVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = firstToNextVC.h; sourceTree = "<group>"; };
 		CE6C4C282019E02000BE1A13 /* firstToNextVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = firstToNextVC.m; sourceTree = "<group>"; };
 		CE6C4C292019E02000BE1A13 /* firstToNextVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = firstToNextVC.xib; sourceTree = "<group>"; };
+		CEC9612A201B16B2009923FE /* PPDragDropBadgeView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PPDragDropBadgeView.bundle; sourceTree = "<group>"; };
+		CEC9612B201B16B2009923FE /* PPDragDropBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDragDropBadgeView.h; sourceTree = "<group>"; };
+		CEC9612D201B16B2009923FE /* PRTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRTween.h; sourceTree = "<group>"; };
+		CEC9612E201B16B2009923FE /* PRTweenTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRTweenTimingFunctions.h; sourceTree = "<group>"; };
+		CEC9612F201B16B2009923FE /* PRTweenTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTweenTimingFunctions.m; sourceTree = "<group>"; };
+		CEC96130201B16B2009923FE /* PRTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTween.m; sourceTree = "<group>"; };
+		CEC96131201B16B2009923FE /* PPDragDropBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDragDropBadgeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +156,7 @@
 		CE6C4BF520198C9300BE1A13 /* LRTabBarController */ = {
 			isa = PBXGroup;
 			children = (
+				CEC96129201B16B2009923FE /* PPDragDropBadgeView */,
 				CE6C4C1C2019A49800BE1A13 /* LRTab.h */,
 				CE6C4C162019A49800BE1A13 /* LRTab.m */,
 				CE6C4C192019A49800BE1A13 /* LRTabBar.h */,
@@ -160,6 +172,28 @@
 				CE6C4C132019A49800BE1A13 /* UIViewController+LRTabBarController.m */,
 			);
 			path = LRTabBarController;
+			sourceTree = "<group>";
+		};
+		CEC96129201B16B2009923FE /* PPDragDropBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				CEC9612A201B16B2009923FE /* PPDragDropBadgeView.bundle */,
+				CEC9612B201B16B2009923FE /* PPDragDropBadgeView.h */,
+				CEC96131201B16B2009923FE /* PPDragDropBadgeView.m */,
+				CEC9612C201B16B2009923FE /* PRTween */,
+			);
+			path = PPDragDropBadgeView;
+			sourceTree = "<group>";
+		};
+		CEC9612C201B16B2009923FE /* PRTween */ = {
+			isa = PBXGroup;
+			children = (
+				CEC9612D201B16B2009923FE /* PRTween.h */,
+				CEC96130201B16B2009923FE /* PRTween.m */,
+				CEC9612E201B16B2009923FE /* PRTweenTimingFunctions.h */,
+				CEC9612F201B16B2009923FE /* PRTweenTimingFunctions.m */,
+			);
+			path = PRTween;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +259,7 @@
 				CE6C4C0820198CAE00BE1A13 /* firstVC.xib in Resources */,
 				CE6C4C262019AC3400BE1A13 /* LRTabBarController.bundle in Resources */,
 				CE6C4C0720198CAE00BE1A13 /* fourVC.xib in Resources */,
+				CEC96132201B16B3009923FE /* PPDragDropBadgeView.bundle in Resources */,
 				CE6C4C0D20198CAE00BE1A13 /* secondvc.xib in Resources */,
 				CE6C4BE7201989AD00BE1A13 /* Assets.xcassets in Resources */,
 				CE6C4C2B2019E02000BE1A13 /* firstToNextVC.xib in Resources */,
@@ -243,10 +278,13 @@
 				CE6C4C232019A49800BE1A13 /* UINavigationController+LRTabBarController.m in Sources */,
 				CE6C4C1E2019A49800BE1A13 /* LRTabBarController.m in Sources */,
 				CE6C4C0620198CAE00BE1A13 /* fourVC.m in Sources */,
+				CEC96135201B16B3009923FE /* PPDragDropBadgeView.m in Sources */,
 				CE6C4C0B20198CAE00BE1A13 /* secondvc.m in Sources */,
 				CE6C4BED201989AD00BE1A13 /* main.m in Sources */,
 				CE6C4BDF201989AD00BE1A13 /* AppDelegate.m in Sources */,
+				CEC96133201B16B3009923FE /* PRTweenTimingFunctions.m in Sources */,
 				CE6C4C2A2019E02000BE1A13 /* firstToNextVC.m in Sources */,
+				CEC96134201B16B3009923FE /* PRTween.m in Sources */,
 				CE6C4C0A20198CAE00BE1A13 /* firstVC.m in Sources */,
 				CE6C4C1D2019A49800BE1A13 /* LRTabBar.m in Sources */,
 				CE6C4C0920198CAE00BE1A13 /* threeVC.m in Sources */,

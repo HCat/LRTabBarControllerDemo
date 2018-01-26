@@ -7,6 +7,8 @@
 //
 
 #import "firstVC.h"
+#import "firstToNextVC.h"
+#import "AppDelegate.h"
 
 @interface firstVC ()
 @property (weak, nonatomic) IBOutlet UILabel *lb_title;
@@ -18,19 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    
+    self.hidesBottomBarWhenPushed = NO;
     _lb_title.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测测试测试测试测试测试测试测试测试";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-     NSLog(@"11111");
-    
+
 }
 
 
 - (IBAction)handleBtnNextClicked:(id)sender {
-    
+    firstToNextVC *t_vc = [[firstToNextVC alloc] init];
+    [self.navigationController pushViewController:t_vc animated:YES];
     
     
 }

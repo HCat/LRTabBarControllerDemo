@@ -7,8 +7,11 @@
 //
 
 #import "fourVC.h"
+#import "AppDelegate.h"
 
 @interface fourVC ()
+
+@property (weak, nonatomic) IBOutlet UITextField *tf_count;
 
 @end
 
@@ -16,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     [self addChangeForEventEditingChanged:self.tf_count];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -40,6 +43,34 @@
     return NSLocalizedString(@"消息", nil);
 }
 
+-(BOOL)showMask{
+    return [_tf_count.text integerValue] > 0 ? YES : NO;
+}
+
+-(NSInteger)showMaskNumber{
+    return [_tf_count.text integerValue];
+}
+
+#pragma mark -
+
+- (void)addChangeForEventEditingChanged:(UITextField *)textField{
+    [textField addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
+-(void)passConTextChange:(id)sender{
+    
+    AppDelegate *t_app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [t_app.vc_tabBar loadTabs];
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+ 
+    [_tf_count resignFirstResponder];
+    return YES;
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

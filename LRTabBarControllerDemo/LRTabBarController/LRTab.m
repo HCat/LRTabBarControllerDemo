@@ -6,6 +6,7 @@
 //
 
 #import "LRTab.h"
+#import "PPDragDropBadgeView.h"
 
 // 选中和未选中图标变化动画时间
 static const float kAnimationDuration = 0.15;
@@ -313,7 +314,7 @@ static const float kTopMargin = 2.0;
         CGFloat center_x = content.size.width;
         CGFloat center_y = content.origin.y;
         
-        UILabel *lb_number = [[UILabel alloc] initWithFrame:CGRectZero];
+        //UILabel *lb_number = [[UILabel alloc] initWithFrame:CGRectZero];
         NSString *str_number = nil;
         
         if (_markNumber > 99) {
@@ -321,25 +322,35 @@ static const float kTopMargin = 2.0;
         }else{
             str_number = [NSString stringWithFormat:@"%ld",(long)_markNumber];
         }
-        lb_number.text = str_number;
-        lb_number.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
-        lb_number.textAlignment = NSTextAlignmentCenter;
-        lb_number.textColor = [UIColor whiteColor];
-        lb_number.font = [UIFont systemFontOfSize:13.f];
-        CGSize size = [lb_number.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:lb_number.font,NSFontAttributeName,nil]];
-        CGFloat nameH = 16;
-        CGFloat nameW = size.width + 6 < 16 ? 16 :size.width + 6;
-        lb_number.frame = CGRectMake(0,0, nameW,nameH);
+        
+//        lb_number.text = str_number;
+//        lb_number.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
+//        lb_number.textAlignment = NSTextAlignmentCenter;
+//        lb_number.textColor = [UIColor whiteColor];
+//        lb_number.font = [UIFont systemFontOfSize:13.f];
+//        CGSize size = [lb_number.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:lb_number.font,NSFontAttributeName,nil]];
+//        CGFloat nameH = 16;
+//        CGFloat nameW = size.width + 6 < 16 ? 16 :size.width + 6;
+//        lb_number.frame = CGRectMake(0,0, nameW,nameH);
+//        if (_markNumber > 99) {
+//            lb_number.center = CGPointMake(self.bounds.size.width - nameW/2, center_y);
+//        }else{
+//            lb_number.center = CGPointMake(center_x, center_y);
+//        }
+//
+//        lb_number.layer.cornerRadius = 8.f;
+//        lb_number.layer.masksToBounds = YES;
+//        [self addSubview:lb_number];
+        
+        PPDragDropBadgeView * badge = [[PPDragDropBadgeView alloc] initWithFrame:CGRectMake(0, 0, 23, 23)];
+        badge.center = CGPointMake(center_x - 9, center_y + 5);
+        badge.font = [UIFont systemFontOfSize:14.f];
         if (_markNumber > 99) {
-            lb_number.center = CGPointMake(self.bounds.size.width - nameW/2, center_y);
-        }else{
-            lb_number.center = CGPointMake(center_x, center_y);
+            badge.font = [UIFont systemFontOfSize:11.f];
         }
         
-        lb_number.layer.cornerRadius = 8.f;
-        lb_number.layer.masksToBounds = YES;
-        [self addSubview:lb_number];
-        
+        badge.text = str_number;
+        [self addSubview:badge];
     }
     
     

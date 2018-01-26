@@ -7,8 +7,10 @@
 //
 
 #import "firstToNextVC.h"
+#import "AppDelegate.h"
 
 @interface firstToNextVC ()
+@property (weak, nonatomic) IBOutlet UILabel *lb_title;
 
 @end
 
@@ -16,8 +18,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.hidesBottomBarWhenPushed = YES;
+    self.lb_title.text = [NSString stringWithFormat:@"%@",self];
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+
+}
+
+
+- (IBAction)handleBtnNextClicked:(id)sender {
+    firstToNextVC *t_vc = [firstToNextVC new];
+    [self.navigationController pushViewController:t_vc animated:YES];
+    
+}
+
+
 
 #pragma mark - dealloc
 
