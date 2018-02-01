@@ -133,8 +133,6 @@ static const float kPushAnimationDuration = 0.35;
 
 #pragma - UINavigationControllerDelegate
 
-
-
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
    
     __weak typeof(self) weakSelf = self;
@@ -148,24 +146,16 @@ static const float kPushAnimationDuration = 0.35;
             NSLog(@"手势滑动结束:%@",strongSelf.currentShowVC);
             BOOL hide = [strongSelf.currentShowVC hidesBottomBarWhenPushed];
             NSLog(@"[viewController lastObject]:%i",hide);
-            if (hide) {
-                [strongSelf hideTabBar:0.0f animated:animated];
+            if (hide == YES) {
+                [strongSelf hideTabBar:0.0f animated:NO];
             }else{
-                [strongSelf showTabBar:0.0f animated:animated];
+                [strongSelf showTabBar:0.0f animated:YES];
             }
-        }else{
-            BOOL hide = [[navigationController viewControllers].lastObject hidesBottomBarWhenPushed];
-            if (hide) {
-                [strongSelf hideTabBar:0.0f animated:animated];
-            }else{
-                [strongSelf showTabBar:0.0f animated:animated];
-            }
-            
         }
         
     }];
     
-    
+
     if (!prevViewControllers){
         prevViewControllers = [navigationController viewControllers];
     }
@@ -201,11 +191,16 @@ static const float kPushAnimationDuration = 0.35;
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
 
-    if (navigationController.viewControllers.count == 1){
-        self.currentShowVC = Nil;
+    self.currentShowVC = viewController;
+    
+    BOOL hide = [self.currentShowVC hidesBottomBarWhenPushed];
+    NSLog(@"[viewController lastObject]:%i",hide);
+    if (hide == YES) {
+        [self hideTabBar:0.0f animated:NO];
     }else{
-        self.currentShowVC = viewController;
+        [self showTabBar:1.0f animated:NO];
     }
+    
 }
 
 

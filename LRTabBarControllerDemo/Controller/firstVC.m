@@ -19,7 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
+    self.title = [NSString stringWithFormat:@"第%ld个页面",self.navigationController.viewControllers.count + 1];
+    
     self.hidesBottomBarWhenPushed = NO;
     _lb_title.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测测试测试测试测试测试测试测试测试";
 }

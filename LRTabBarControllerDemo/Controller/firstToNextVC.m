@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = [NSString stringWithFormat:@"第%ld个页面",self.navigationController.viewControllers.count];
     self.hidesBottomBarWhenPushed = YES;
     self.lb_title.text = [NSString stringWithFormat:@"%@",self];
 }
