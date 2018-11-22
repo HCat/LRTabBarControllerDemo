@@ -34,6 +34,7 @@
 		CEC96133201B16B3009923FE /* PRTweenTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC9612F201B16B2009923FE /* PRTweenTimingFunctions.m */; };
 		CEC96134201B16B3009923FE /* PRTween.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC96130201B16B2009923FE /* PRTween.m */; };
 		CEC96135201B16B3009923FE /* PPDragDropBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC96131201B16B2009923FE /* PPDragDropBadgeView.m */; };
+		CECAE5322029AF0800FE583C /* UIViewController+BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CECAE5302029AF0700FE583C /* UIViewController+BarItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		CEC9612F201B16B2009923FE /* PRTweenTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTweenTimingFunctions.m; sourceTree = "<group>"; };
 		CEC96130201B16B2009923FE /* PRTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTween.m; sourceTree = "<group>"; };
 		CEC96131201B16B2009923FE /* PPDragDropBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDragDropBadgeView.m; sourceTree = "<group>"; };
+		CECAE5302029AF0700FE583C /* UIViewController+BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BarItem.m"; sourceTree = "<group>"; };
+		CECAE5312029AF0800FE583C /* UIViewController+BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarItem.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 		CE6C4BDC201989AD00BE1A13 /* LRTabBarControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CECAE5312029AF0800FE583C /* UIViewController+BarItem.h */,
+				CECAE5302029AF0700FE583C /* UIViewController+BarItem.m */,
 				CE6C4BF520198C9300BE1A13 /* LRTabBarController */,
 				CE6C4BF420198C5F00BE1A13 /* Controller */,
 				CE6C4BDD201989AD00BE1A13 /* AppDelegate.h */,
@@ -280,6 +285,7 @@
 				CE6C4C0620198CAE00BE1A13 /* fourVC.m in Sources */,
 				CEC96135201B16B3009923FE /* PPDragDropBadgeView.m in Sources */,
 				CE6C4C0B20198CAE00BE1A13 /* secondvc.m in Sources */,
+				CECAE5322029AF0800FE583C /* UIViewController+BarItem.m in Sources */,
 				CE6C4BED201989AD00BE1A13 /* main.m in Sources */,
 				CE6C4BDF201989AD00BE1A13 /* AppDelegate.m in Sources */,
 				CEC96133201B16B3009923FE /* PRTweenTimingFunctions.m in Sources */,

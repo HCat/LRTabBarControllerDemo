@@ -21,7 +21,13 @@
     self.title = [NSString stringWithFormat:@"第%ld个页面",self.navigationController.viewControllers.count];
     self.hidesBottomBarWhenPushed = YES;
     self.lb_title.text = [NSString stringWithFormat:@"%@",self];
+    
+    [self showLeftBarButtonItemWithImage:@"nav_back" target:self action:@selector(handleBtnBackClicked:)];
+    
 }
+
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -36,6 +42,11 @@
     
 }
 
+
+- (IBAction)handleBtnBackClicked:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 
 
 #pragma mark - dealloc
